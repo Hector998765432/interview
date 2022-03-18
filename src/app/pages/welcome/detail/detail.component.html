@@ -1,0 +1,48 @@
+<nz-descriptions nzTitle="{{meal.strMeal}}" nzBordered>
+  <nz-descriptions-item nzTitle="Previsualización" [nzSpan]="3">
+    <nz-avatar [nzSize]="200" nzIcon="user" nzSrc="{{meal.strMealThumb}}"></nz-avatar>
+  </nz-descriptions-item>
+  <nz-descriptions-item nzTitle="Tags" [nzSpan]="3" *ngIf="tags.length > 0">
+    <nz-tag *ngFor="let item of tags" [nzColor]="'#f50'">{{item}}</nz-tag>
+  </nz-descriptions-item>
+
+  <nz-descriptions-item nzTitle="Categoria" [nzSpan]="2">
+    {{meal.strCategory}}
+  </nz-descriptions-item>
+
+  <nz-descriptions-item nzTitle="Área" [nzSpan]="2">
+    {{meal.strArea}}
+  </nz-descriptions-item>
+
+  <nz-descriptions-item nzTitle="Ingredientes" [nzSpan]="3">
+    <ul>
+      <li *ngFor="let item of ingredients">{{item}}</li>
+    </ul>
+  </nz-descriptions-item>
+
+  <nz-descriptions-item nzTitle="Instrucciones" [nzSpan]="3">
+    <ol>
+      <li *ngFor="let item of instructions">{{item}}.</li>
+    </ol>
+  </nz-descriptions-item>
+
+  <nz-descriptions-item nzTitle="Unidades de Medida" [nzSpan]="3">
+    <ul>
+      <li *ngFor="let item of measures">{{item}}</li>
+    </ul>
+  </nz-descriptions-item>
+
+  <nz-descriptions-item nzTitle="Más información" [nzSpan]="2">
+    <a href="{{meal.strSource}}" target="_blank">
+      <i nz-icon nzType="plus" nzTheme="outline">
+      </i>
+    </a>
+
+  </nz-descriptions-item>
+
+  <nz-descriptions-item nzTitle="Video de preparación" [nzSpan]="2">
+    <a href="{{meal.strYoutube}}" target="_blank">
+      <i nz-icon nzType="youtube" nzTheme="outline"></i>
+    </a>
+  </nz-descriptions-item>
+</nz-descriptions>

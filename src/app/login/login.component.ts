@@ -18,10 +18,10 @@ export class LoginComponent implements OnInit {
 
   passwordVisible = false;
 
-  public defaultUser: User = {
-    email: '',
-    name: '',
-    second_name: '',
+  static defaultUser: User = {
+    email: 'salsih99@gmail.com',
+    name: 'Héctor',
+    second_name: 'Galván',
   };
 
   ngOnInit(): void {
@@ -43,11 +43,6 @@ export class LoginComponent implements OnInit {
     ) {
       this._message.create('success', 'Bienvenido');
       this._router.navigateByUrl('welcome');
-      this.defaultUser = {
-        email: 'salsih99@gmail.com',
-        name: 'Héctor',
-        second_name: 'Galván',
-      };
     } else
       this._message.create('error', 'Usuario o contraseña incorrectos.'),
         this.validateForm.reset();

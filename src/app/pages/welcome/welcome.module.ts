@@ -14,10 +14,15 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { NzDescriptionsModule } from 'ng-zorro-antd/descriptions';
+import { NzTagModule } from 'ng-zorro-antd/tag';
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
+import { DetailComponent } from './detail/detail.component';
 const routes: Routes = [{ path: '', component: MainComponent }];
 
 @NgModule({
-  declarations: [MainComponent],
+  declarations: [MainComponent, DetailComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -27,6 +32,10 @@ const routes: Routes = [{ path: '', component: MainComponent }];
     NzTypographyModule,
     NzInputModule,
     NzCardModule,
+    NzAvatarModule,
+    NzDescriptionsModule,
+    NzTagModule,
+    NzDrawerModule
   ],
 })
 export class WelcomeModule {}

@@ -1,87 +1,37 @@
-<div nz-row>
-  <div nz-col nzSpan="24">
-    <nz-card nzTitle="Card title">
-      <p>Card content</p>
-      <p>Card content</p>
-      <p>Card content</p>
-    </nz-card>
-  </div>
+<div nz-row nzJustify="center">
+  <h1 class="user-name"> <b> Bienvenido, {{userInfo.name}} {{userInfo.second_name}} </b></h1>
+</div>
 
-  <div nz-col nzSpan="24">
-    <nz-card nzTitle="Card title">
-      <p>Card content</p>
-      <p>Card content</p>
-      <p>Card content</p>
-    </nz-card>
-  </div>
-  <div nz-col nzSpan="24">
-    <nz-card nzTitle="Card title">
-      <p>Card content</p>
-      <p>Card content</p>
-      <p>Card content</p>
-    </nz-card>
-  </div>
-  <div nz-col nzSpan="24">
-    <nz-card nzTitle="Card title">
-      <p>Card content</p>
-      <p>Card content</p>
-      <p>Card content</p>
-    </nz-card>
-  </div>
-  <div nz-col nzSpan="24">
-    <nz-card nzTitle="Card title">
-      <p>Card content</p>
-      <p>Card content</p>
-      <p>Card content</p>
-    </nz-card>
-  </div>
-  <div nz-col nzSpan="24">
-    <nz-card nzTitle="Card title">
-      <p>Card content</p>
-      <p>Card content</p>
-      <p>Card content</p>
-    </nz-card>
-  </div>
-  <div nz-col nzSpan="24">
-    <nz-card nzTitle="Card title">
-      <p>Card content</p>
-      <p>Card content</p>
-      <p>Card content</p>
-    </nz-card>
-  </div>
-  <div nz-col nzSpan="24">
-    <nz-card nzTitle="Card title">
-      <p>Card content</p>
-      <p>Card content</p>
-      <p>Card content</p>
-    </nz-card>
-  </div>
-  <div nz-col nzSpan="24">
-    <nz-card nzTitle="Card title">
-      <p>Card content</p>
-      <p>Card content</p>
-      <p>Card content</p>
-    </nz-card>
-  </div>
-  <div nz-col nzSpan="24">
-    <nz-card nzTitle="Card title">
-      <p>Card content</p>
-      <p>Card content</p>
-      <p>Card content</p>
-    </nz-card>
-  </div>
-  <div nz-col nzSpan="24">
-    <nz-card nzTitle="Card title">
-      <p>Card content</p>
-      <p>Card content</p>
-      <p>Card content</p>
-    </nz-card>
-  </div>
-  <div nz-col nzSpan="24">
-    <nz-card nzTitle="Card title">
-      <p>Card content</p>
-      <p>Card content</p>
-      <p>Card content</p>
-    </nz-card>
+<div nz-row nzJustify="center">
+  <div nz-col nzXs="12" nzSm="12" nzMd="12" nzLg="12" nzXl="12" class="inner-box color-item" style="cursor: pointer;"
+    (click)="openComponent(createContent, randomMeal, 'Detalles de preparación')">
+    <ng-container *ngIf="randomMeal; then CardContainer;"></ng-container>
   </div>
 </div>
+
+
+<ng-template #CardContainer>
+  <div nz-row>
+    <div nz-col nzSpan="24">
+      <p class="name-module">Platillo del día:</p>
+    </div>
+    <div nz-col nzSpan="9">
+      <nz-avatar [nzSize]="200" nzIcon="loading" *ngIf="loading"></nz-avatar>
+      <nz-avatar [nzSize]="200" nzIcon="user" nzSrc="{{randomMeal.strMealThumb}}" *ngIf="!loading"></nz-avatar>
+    </div>
+    <div nz-col nzSpan="15">
+      <nz-descriptions nzTitle="Platillo: {{randomMeal.strMeal}}">
+        <nz-descriptions-item nzTitle="Tags" *ngIf="tags.length > 0">
+          <nz-tag *ngFor="let item of tags" [nzColor]="'#f50'">{{item}}</nz-tag>
+        </nz-descriptions-item>
+      </nz-descriptions>
+    </div>
+    <div nz-col nzSpan="6" nzOffset="18">
+      <i style="font-size: 1.5rem" nz-icon nzType="arrow-right" nzTheme="outline"></i>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #createContent>
+  <app-detail [meal]="mealData"> </app-detail>
+</ng-template>
