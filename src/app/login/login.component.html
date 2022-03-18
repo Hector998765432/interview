@@ -1,0 +1,44 @@
+<div class="body">
+    <div class="wrapper">
+        <div nz-row style="height: 100%">
+            <div nz-col [nzXs]="2" [nzSm]="6" [nzXl]="9"></div>
+            <div nz-col [nzXs]="20" [nzSm]="12" [nzXl]="6">
+                <ng-container *ngTemplateOutlet="loginForm"></ng-container>
+            </div>
+            <div nz-col [nzXs]="2" [nzSm]="6" [nzXl]="9"></div>
+        </div>
+    </div>
+
+    <ng-template #loginForm>
+        <form class="login" [formGroup]="validateForm" #signInNgForm="ngForm" (ngSubmit)="signIn()">
+            <div nz-row>
+                <p class="title">Iniciar sesión</p>
+            </div>
+            <div nz-row>
+                <input nz-input class="input_login" formControlName="user" type="text" placeholder="Usuario"
+                    autofocus />
+                <i class="fa fa-user"></i>
+            </div>
+            <div nz-row>
+                <div nz-col nzSpan="21">
+                    <input nz-input class="input_login" formControlName="password"
+                        [type]="passwordVisible ? 'text' : 'password'" placeholder="Contraseña" />
+                </div>
+                <div nz-col nzSpan="3">
+                    <button nz-button type="button" class="pass_button" nzType="link" nz-tooltip
+                        nzTooltipTitle="Mostrar contraseña" (click)="passwordVisible = !passwordVisible">
+                        <i nz-icon [nzType]="passwordVisible ? 'eye' : 'eye-invisible'" nzTheme="outline"></i>
+                    </button>
+                </div>
+            </div>
+            <i class="fa fa-key"></i>
+            <br />
+            <br />
+            <button type="submit" class="login_button">
+                <i class="spinner"></i>
+                <span class="state">Iniciar sesión</span>
+            </button>
+        </form>
+    </ng-template>
+</div>
+
