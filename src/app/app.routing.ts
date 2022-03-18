@@ -4,6 +4,7 @@ import { LayoutComponent } from './layout/layout.component';
 
 export const appRoutes: Route[] = [
   { path: 'login', component: LoginComponent },
+  { path: '', pathMatch: 'full', redirectTo: 'login' },
   { path: 'signed-in-redirect', pathMatch: 'full', redirectTo: 'welcome' },
   {
     //* welcome
