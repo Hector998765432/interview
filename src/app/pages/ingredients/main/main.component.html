@@ -1,0 +1,39 @@
+<div nz-row nzJustify="center">
+  <h1 class="user-name">Ingredientes Principales</h1>
+</div>
+
+<div nz-row nzJustify="center">
+  <nz-input-group [nzSuffix]="suffixIconSearch" nzSize="large" style="width: 50%">
+    <input type="text" nz-input placeholder="Buscar Ingrediente" [(ngModel)]="searchText" />
+  </nz-input-group>
+  <ng-template #suffixIconSearch>
+    <i nz-icon nzType="search"></i>
+  </ng-template>
+</div>
+
+<div nz-row nzJustify="center" *ngIf="!loading">
+  <ng-container *ngIf="ingredients; then CardContainer;"></ng-container>
+</div>
+
+<div nz-row nzJustify="center" *ngIf="loading">
+  <nz-result nzStatus="info" nzTitle="Cargando Información">
+    <div nz-result-extra>
+      <i nz-icon nzType="loading" nzTheme="outline"></i>
+    </div>
+  </nz-result>
+</div>
+
+<ng-template #CardContainer>
+  <div nz-col nzXs="22" nzSm="22" nzMd="10" nzLg="6" nzXl="6" class="gutter-row"
+    *ngFor="let item of displayIngredients | filter: searchText" class="inner-box color-item">
+    <div nz-row>
+      <div nz-col nzSpan="20">
+        <p class="name-module">{{ item.strIngredient}}</p>
+      </div>
+      <div nz-col nzSpan="4"></div>
+      <div nz-col nzSpan="20" style="height: 10rem; overflow: auto;">
+        <p>{{ item.strDescription }}</p>
+      </div>
+    </div>
+  </div>
+</ng-template>

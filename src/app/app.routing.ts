@@ -16,6 +16,11 @@ export const appRoutes: Route[] = [
         loadChildren: () =>
           import('./pages/welcome/welcome.module').then((m) => m.WelcomeModule),
       },
+      {
+        path: 'ingredient',
+        loadChildren: () =>
+          import('./pages/ingredients/ingredients.module').then((m) => m.IngredientsModule),
+      },
     ],
   },
 ];
