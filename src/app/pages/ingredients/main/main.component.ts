@@ -11,13 +11,13 @@ import { Ingredient } from 'src/app/ïnterfaces/ingredient';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit, OnDestroy {
   constructor(private IngredientService: IngredientService) {}
 
   private unsubscribeAll$: Subject<void> = new Subject<void>();
 
   loading: boolean = false;
-  searchText: string = ''
+  searchText: string = '';
 
   ingredients: Ingredient[] = [];
   displayIngredients: Ingredient[] = [];
