@@ -44,7 +44,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let meal of basicTable.data">
+        <tr *ngFor="let meal of basicTable.data" style="cursor: pointer;"
+          (click)="openComponent(createContent, meal, 'Detalles de Platillo')">
           <td>
             <nz-avatar [nzSize]="100" nzIcon="user" nzSrc="{{meal.strMealThumb}}"></nz-avatar>
           </td>
@@ -69,3 +70,7 @@
     </div>
   </nz-result>
 </div>
+
+<ng-template #createContent>
+  <app-detail [meal]="mealData"> </app-detail>
+</ng-template>

@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { NzDrawerService, NzDrawerRef } from 'ng-zorro-antd/drawer';
 import { Dishes } from 'src/app/ïnterfaces/dishes';
+import { Meal } from 'src/app/ïnterfaces/meal';
 
 @Component({
   selector: 'app-main',
@@ -12,7 +13,10 @@ import { Dishes } from 'src/app/ïnterfaces/dishes';
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit, OnDestroy {
-  constructor(private DishesService: DishesService) {}
+  constructor(
+    private DishesService: DishesService,
+    private drawerService: NzDrawerService
+  ) {}
 
   private unsubscribeAll$: Subject<void> = new Subject<void>();
 
@@ -69,4 +73,27 @@ export class MainComponent implements OnInit, OnDestroy {
   //! y dejo que filtren por letra inicial
 
   //! Por Esto, para el carrusel de fotos, tomaré 3 en vez de 5 platillos ya que en algunas letras vienen pocos items
+
+  //* ***************************
+  //* *************************** drawer created
+
+  drawerCreated!: NzDrawerRef;
+  mealData!: Meal;
+
+  openComponent(content: any, data: Meal, title: string): void {
+    this.mealData = data;
+    this.drawerCreated = this.drawerService.create({
+      nzTitle: title,
+      nzContent: content,
+      nzWidth: '80vh',
+    });
+
+    this.drawerCreated.afterOpen.subscribe(() => {
+      console.log('Drawer(Component) open');
+    });
+
+    this.drawerCreated.afterClose.subscribe((data) => {
+      console.log(data);
+    });
+  }
 }

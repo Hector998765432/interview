@@ -42,7 +42,7 @@ export class DetailComponent implements OnInit {
         array.push(value);
       }
     }
-    this.ingredients = array.filter((x) => x != '');
+    this.ingredients = array.filter((x) => x != '' && x != null && x != ' ');
   }
 
   getInstructions() {
